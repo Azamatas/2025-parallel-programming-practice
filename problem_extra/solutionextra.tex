@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\title{parallel programming}
+\author{Azamat Amanbay}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Solution}
+\textbf{General Idea:} we divide the linked list into smaller sub-lists,
+where threads, specifically assigned to the corresponding sub-lists, will
+calculate the ranks of the nodes. Moreover, the heads of the sub-lists will
+be stored in another linked list in order of their appearance in the main list.
+
+\section{Implementation}
+The main linked list is divided into sub-lists defined by special head-nodes,
+such that each node belongs to exactly one sub-list. Let \textit{N} be the size
+of the linked list and \textit{M} the number of threads. Each thread processes
+one or more sub-lists and determines the rank of each node inside its sub-list,
+that is the distance from the head-node of the sub-list to the node.
+
+The heads of each sub-list are stored in a different array. Then, after the
+ranks of the head-nodes are computed, the rank of each node will be:
+
+\[
+\text{rank}[n] = \text{rank}[h] + \text{rank}[s],
+\]
+
+where $n$ is the node in the main list, $h$ is the head of the corresponding
+sub-list stored in the head array, and $s$ is the position of the node inside
+the corresponding sub-list.
+
+Each node is processed a constant number of times across all phases of the
+algorithm, therefore the total work of the algorithm is $O(n)$.
+
+
+\end{document}
