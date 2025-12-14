@@ -1,8 +1,7 @@
 BUILD_DIR = build
 TARGET = $(BUILD_DIR)/solution
 CXX = g++
-CXXFLAGS = -O3 -std=c++20 -pthread
-LDFLAGS  += -pthread
+CXXFLAGS = -O3 -std=c++20
 SRC = $(wildcard *.cpp)
 
 prepare: $(TARGET) 
@@ -15,4 +14,5 @@ run: prepare
 	@./$(TARGET)
 
 clean:
+
 	rm -rf $(BUILD_DIR)
