@@ -1,10 +1,11 @@
 BUILD_DIR = build
 TARGET = $(BUILD_DIR)/solution
 CXX = g++
-CXXFLAGS = -O3 -std=c++20
+CXXFLAGS = -O3 -std=c++20 -pthread
+LDFLAGS  += -pthread
 SRC = $(wildcard *.cpp)
 
-prepare: $(TARGET)
+prepare: $(TARGET) 
 
 $(TARGET): $(SRC)
 	@mkdir -p $(BUILD_DIR)
